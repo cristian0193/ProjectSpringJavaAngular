@@ -14,6 +14,9 @@ import { ClienteService } from './clientes/cliente.service';
 // Router
 import { RouterModule, Routes } from '@angular/router';
 
+// Http (permite comunicacion con las API's de Spring)
+import { HttpClientModule } from '@angular/common/http';
+
 const routes: Routes = [
   { path: '', redirectTo: '/clientes', pathMatch: 'full'},
   { path: 'directivas', component: DirectivasComponent },
@@ -37,6 +40,7 @@ export class AppRoutingModule {}
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ClienteService],
