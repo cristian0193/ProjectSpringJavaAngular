@@ -10,22 +10,30 @@ import { ClientesComponent } from './clientes/clientes.component';
 
 // Services
 import { ClienteService } from './clientes/cliente.service';
+import { ProductoService } from './productos/productos.service';
 
 // Router
 import { RouterModule, Routes } from '@angular/router';
 
 // Http (permite comunicacion con las API's de Spring)
 import { HttpClientModule } from '@angular/common/http';
+import { ProductosComponent } from './productos/productos.component';
+import { FormComponent } from './clientes/form.component';
+import { FormsModule } from '@angular/forms';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/clientes', pathMatch: 'full'},
   { path: 'directivas', component: DirectivasComponent },
   { path: 'clientes', component: ClientesComponent },
+  { path: 'productos', component: ProductosComponent },
+  { path: 'clientes/form', component: FormComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  declarations: [FormComponent]
 })
 export class AppRoutingModule {}
 
@@ -36,14 +44,17 @@ export class AppRoutingModule {}
     HeaderComponent,
     FooterComponent,
     DirectivasComponent,
-    ClientesComponent
+    ClientesComponent,
+    ProductosComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ClienteService],
+  providers: [ClienteService, ProductoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
